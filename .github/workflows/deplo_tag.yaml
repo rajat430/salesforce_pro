@@ -16,6 +16,6 @@ jobs:
         
       - name: deploying tag
         run: |
-          tag_commit_id = git rev-list -n 1 ${{ github.event.inputs.tag_name }}
+          tag_commit_id=$(git rev-list -n 1 ${{ github.event.inputs.tag_name }})
           echo "Deploying tag ${{ github.event.inputs.tag_name }} with commit ID $tag_commit_id ..."
           # Add your deployment commands here, using $tag_commit_id as needed          
