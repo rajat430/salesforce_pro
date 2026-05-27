@@ -26,6 +26,8 @@ jobs:
           # Add your tag pushing commands here
           job_id=${{ github.run_id }}
           date=$(date +%Y-%m-%d)
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git tag -a "$date-$job_id" -m "Deployment tag for job $job_id on $date"
           git push origin --tags
         env:
