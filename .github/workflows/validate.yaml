@@ -2,12 +2,15 @@ name: build_workflow
 on:
   pull_request:
     branches: [ dev,release,uat,preprod,main ]
+    types: [ opened, synchronize, reopened ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: publish_tag
+        with:
+          fetch-depth: 0
+      - name: validate_pr
         run: |
-          echo "Publishing tag..."
-          # Add your tag publishing commands here
+          echo "Validating pull request..."
+          # Add your validation commands here
