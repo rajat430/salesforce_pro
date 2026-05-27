@@ -1,0 +1,21 @@
+name: deploy_tag
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name to push'
+        required: true
+
+jobs:
+  deploy_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        
+      - name: deploying tag
+        run: |
+          $tag_commit_id = git rev-list -n 1 ${{ github.event.inputs.tag_name }}
+          echo "Deploying tag ${{ github.event.inputs.tag_name }} with commit ID $tag_commit_id..."
+          # Add your deployment commands here, using $tag_commit_id as needed          
