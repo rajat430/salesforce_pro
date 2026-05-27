@@ -1,0 +1,13 @@
+name: build_workflow
+on:
+  pull_request:
+    branches: [ dev,release,uat,preprod,main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: publish_tag
+        run: |
+          echo "Publishing tag..."
+          # Add your tag publishing commands here

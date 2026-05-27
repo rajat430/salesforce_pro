@@ -1,0 +1,30 @@
+name: deploy
+on:
+  pull_request:
+    branches: [ dev,release]
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: created_delta
+        run: |
+          echo "Creating delta..."
+          # Add your delta creation commands here
+      - name: deploying
+        run: |
+          echo "Deploying to org..."
+          # Add your sandbox deployment commands here
+      - name: pushing_tag
+        run: |
+          echo "Pushing tag..."
+          # Add your tag pushing commands here
+          $job_id = ${{ github.run_id }}
+          $date = $(date +%Y-%m-%d)
+          git tag -a "d$date-$job_id" -m "Deployment tag for job $job_id on $date"
+          git push origin --tags
+
+      
+      
+        
