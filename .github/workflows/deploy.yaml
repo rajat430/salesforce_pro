@@ -21,8 +21,8 @@ jobs:
         run: |
           echo "Pushing tag..."
           # Add your tag pushing commands here
-          $job_id=${{ github.run_id }}
-          $date=$(date +%Y-%m-%d)
+          job_id=${{ github.run_id }}
+          date=$(date +%Y-%m-%d)
           git tag -a "$date-$job_id" -m "Deployment tag for job $job_id on $date"
           git push origin --tags
 
