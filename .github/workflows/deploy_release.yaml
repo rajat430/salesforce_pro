@@ -1,0 +1,14 @@
+name: deploy_release
+on:
+  release:
+    types: published
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6.0.2
+      - name: list_files_from_release
+        run: |
+          ls -Rlt
+    
